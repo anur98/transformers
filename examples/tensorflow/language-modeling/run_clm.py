@@ -502,18 +502,18 @@ def main():
             steps_per_epoch=len(train_dataset) // (training_args.per_device_train_batch_size * num_replicas),
             callbacks=[SavePretrainedCallback(output_dir=training_args.output_dir)],
         )
-        try:
-            train_perplexity = math.exp(history.history["loss"][-1])
-        except OverflowError:
-            train_perplexity = math.inf
-        try:
-            validation_perplexity = math.exp(history.history["val_loss"][-1])
-        except OverflowError:
-            validation_perplexity = math.inf
-        logger.info(f"  Final train loss: {history.history['loss'][-1]:.3f}")
-        logger.info(f"  Final train perplexity: {train_perplexity:.3f}")
-        logger.info(f"  Final validation loss: {history.history['val_loss'][-1]:.3f}")
-        logger.info(f"  Final validation perplexity: {validation_perplexity:.3f}")
+#         try:
+#             train_perplexity = math.exp(history.history["loss"][-1])
+#         except OverflowError:
+#             train_perplexity = math.inf
+#         try:
+#             validation_perplexity = math.exp(history.history["val_loss"][-1])
+#         except OverflowError:
+#             validation_perplexity = math.inf
+#         logger.info(f"  Final train loss: {history.history['loss'][-1]:.3f}")
+#         logger.info(f"  Final train perplexity: {train_perplexity:.3f}")
+#         logger.info(f"  Final validation loss: {history.history['val_loss'][-1]:.3f}")
+#         logger.info(f"  Final validation perplexity: {validation_perplexity:.3f}")
         # endregion
 
         if training_args.output_dir is not None:
